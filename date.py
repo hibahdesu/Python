@@ -29,6 +29,16 @@ print(datetime.datetime(1996, 9, 15))
 
 #How much I have lived till now
 birthdayTime = (datetime.datetime(1996, 9, 15))
+
+print(birthdayTime.strftime('%a'))
+print(birthdayTime.strftime('%A'))
+print(birthdayTime.strftime('%b'))
+print(birthdayTime.strftime('%B'))
+print(birthdayTime.strftime('%d'))
+print(birthdayTime.strftime('%D'))
+print(birthdayTime.strftime('%H'))
+print(birthdayTime.strftime(f'%d\%B\%Y'))
+
 nowTime = datetime.datetime.now()
 
 print(f'I have lived for about {nowTime - birthdayTime}')
