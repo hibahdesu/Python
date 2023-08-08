@@ -16,5 +16,14 @@ print(reversed(supList))
 reveList = reversed(supList)
 
 for rev in reveList:
-    
+
     print(rev)
+
+import termcolor
+import pyfiglet
+
+# print(dir(termcolor))
+
+print(pyfiglet.figlet_format('Hibah Sindi'))
+
+print(termcolor.colored(pyfiglet.figlet_format('Hibah Sindi'), color="Yellow"))
