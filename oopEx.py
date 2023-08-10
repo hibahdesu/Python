@@ -151,6 +151,6 @@ print(user_3.del_user())
 
 print(Users.user_numbers)
 
-print(Users.users_num())
+Users.users_num()
 
 print(Users.say_hola())
