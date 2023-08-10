@@ -30,6 +30,11 @@ print(f'The user name is: {user_three.name} {user_three.last}, and his age is: {
 #Class
 
 class Users:
+
+    not_names = ['Hell', 'Fuck', 'Shit', 'Hhaa', 'God']
+
+    user_numbers = 0
+
     def __init__(self, user_name, user_last, user_age, user_gender):
 
         self.name = user_name
@@ -40,23 +45,39 @@ class Users:
 
         self.gender = user_gender
 
+        Users.user_numbers += 1
+
     def full_name(self):
 
-        return f'{self.name} {self.last}'    
+        if self.name in Users.not_names:
+
+            raise ValueError('Name is not allowed')
+        
+        else:
+
+            return f'{self.name} {self.last}'    
     
     def title(self):
-        
-        if  self.gender == 'Male':
 
-            return f'Hello Mr.{self.name}'
-        
-        elif self.gender == 'Female':
+        if self.name in Users.not_names:
 
-            return f'Hello Mrs.{self.name}'
+            raise ValueError('Name is not allowed')
         
-        else: 
+        else:
 
-            return f'Hello {self.name}'
+            if  self.gender == 'Male':
+
+                return f'Hello Mr.{self.name}'
+        
+            elif self.gender == 'Female':
+
+                return f'Hello Mrs.{self.name}'
+        
+            else: 
+
+                return f'Hello {self.name}'
+
+        
         
     def uage(self):
 
@@ -65,6 +86,15 @@ class Users:
     def full_details(self):
 
         return f'{self.title()} your age {self.uage()} is '
+    
+    def del_user(self):
+
+        Users.user_numbers -=1
+
+        return f'User {self.name} Deleted'
+
+
+print(Users.user_numbers)
 
 user_1 = Users('Jane', 'Johnson', 23, 'Male')
 
@@ -72,7 +102,9 @@ user_2 = Users('David', 'Joseph', 29, 'Male')
 
 user_3 = Users('Tanaka', 'Naoki', 25, 'Male')   
 
-user_4 = Users('Sakura', 'Horishima', 26, 'Female')   
+user_4 = Users('Sakura', 'Horishima', 26, 'Female')  
+
+# user_5 = Users('Shit', 'Horishima', 26, 'Female') 
 
 print(user_1.full_name())
 
@@ -92,5 +124,10 @@ print(user_3.full_details())
 
 print(user_4.full_details())
 
+# print(user_5.full_name())
 
+print(Users.user_numbers)
 
+print(user_3.del_user())
+
+print(Users.user_numbers)
