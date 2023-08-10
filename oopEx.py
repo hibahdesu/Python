@@ -35,6 +35,14 @@ class Users:
 
     user_numbers = 0
 
+    #Class method
+    @classmethod
+    
+    def users_num(cls):
+
+        print(f'There are about {cls.user_numbers} users till now')
+
+    #The initial one
     def __init__(self, user_name, user_last, user_age, user_gender):
 
         self.name = user_name
@@ -47,6 +55,15 @@ class Users:
 
         Users.user_numbers += 1
 
+    #Static method  
+    @staticmethod
+
+    def say_hola():
+
+        return 'Hola...'
+
+
+    #Initial method
     def full_name(self):
 
         if self.name in Users.not_names:
@@ -104,6 +121,8 @@ user_3 = Users('Tanaka', 'Naoki', 25, 'Male')
 
 user_4 = Users('Sakura', 'Horishima', 26, 'Female')  
 
+user_6 = Users('Sakura', 'Sozuki', 30, 'Female') 
+
 # user_5 = Users('Shit', 'Horishima', 26, 'Female') 
 
 print(user_1.full_name())
@@ -131,3 +150,7 @@ print(Users.user_numbers)
 print(user_3.del_user())
 
 print(Users.user_numbers)
+
+print(Users.users_num())
+
+print(Users.say_hola())
