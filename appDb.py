@@ -1,6 +1,10 @@
 #Application about the database 
 import sqlite3
 
+db = sqlite3.connect('appDb.db')
+
+cr = db.cursor()
+
 message = """
 What do you want to do in your profile:
 's': Show all skills
