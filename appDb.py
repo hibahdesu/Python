@@ -5,6 +5,9 @@ db = sqlite3.connect('appDb.db')
 
 cr = db.cursor()
 
+#Create table
+cr.execute('CREATE TABLE if not exists users(name TEXT, skill TEXT, progress INTEGER, id INTEGER)')
+
 #user id
 id = 1
 
@@ -52,21 +55,24 @@ def show():
 
 def add():
 
-    skill = input('Write the skill:').strip().capitalize()
+    skill = input('Write the skill: ').strip().capitalize()
 
-    level = input('Write the progress of your skill').strip()
+    level = input('Write the progress of your skill: ').strip()
 
-    cr.execute(f'INSERT INTO skills(name, skill, progress, id) values("{user_name}", "{skill}", "{level}", "{id}")')
+    cr.execute(f'INSERT INTO users(name, skill, progress, id) values("{user_name}", "{skill}", "{level}", "{id}")')
 
     saveAndClose()
 
-    pass
 
 def delete():
 
+    skill = input('Write the skill: ').strip().capitalize()
+
+    cr.execute(f'DELETE FROM users WHERE skill = "{skill}"')
+
     saveAndClose()
 
-    pass
+    
 
 def update():
 
