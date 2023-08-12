@@ -5,6 +5,23 @@ db = sqlite3.connect('appDb.db')
 
 cr = db.cursor()
 
+#user id
+id = 1
+
+#save and close method
+def saveAndClose():
+
+    #commit
+    db.commit()
+
+    #close
+    db.close()
+
+    print('Connection in closed now.')
+
+
+
+#User message
 message = """
 What do you want to do in your profile:
 's': Show all skills
@@ -29,21 +46,31 @@ commands = ['s', 'a', 'd', 'u', 'q']
 #Define the methods
 def show():
 
+    saveAndClose()
+
     pass
 
 def add():
+
+    saveAndClose()
 
     pass
 
 def delete():
 
+    saveAndClose()
+
     pass
 
 def update():
 
+    saveAndClose()
+
     pass
 
 def quit():
+
+    saveAndClose()
 
     pass
 
