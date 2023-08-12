@@ -68,7 +68,7 @@ def delete():
 
     skill = input('Write the skill: ').strip().capitalize()
 
-    cr.execute(f'DELETE FROM users WHERE skill = "{skill}"')
+    cr.execute(f'DELETE FROM users WHERE skill = "{skill}" AND id = "{id}"')
 
     saveAndClose()
 
