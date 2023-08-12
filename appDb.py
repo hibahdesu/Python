@@ -49,9 +49,23 @@ commands = ['s', 'a', 'd', 'u', 'q']
 #Define the methods
 def show():
 
+    cr.execute('SELECT * FROM users WHERE id = "{id}"')
+
+    resule = cr.fetchall()
+
+    print(f'You have {len(resule)} skills')
+
+    print('Skills with progress: ')
+
+    for sk in resule:
+
+        print(f'The skill is {sk[0]}')
+
+        print(f'--The progress is {sk[1]}%')
+
     saveAndClose()
 
-    pass
+    
 
 def add():
 
@@ -115,8 +129,10 @@ if user_chooses in commands:
     else: 
 
         #Quit Program
-        quit()
-        print('App Closed.')
+        # quit()
+        print('App Is Closed.')
+
+        saveAndClose()
 
 else:
 
