@@ -52,6 +52,12 @@ def show():
 
 def add():
 
+    skill = input('Write the skill:').strip().capitalize()
+
+    level = input('Write the progress of your skill').strip()
+
+    cr.execute(f'INSERT INTO skills(name, skill, progress, id) values("{user_name}", "{skill}", "{level}", "{id}")')
+
     saveAndClose()
 
     pass
@@ -77,7 +83,7 @@ def quit():
 #Check the commands the user types
 if user_chooses in commands:
 
-    print(f'{user_chooses} Right Command')
+    # print(f'{user_chooses} Right Command')
 
     if user_chooses == 's':
 
