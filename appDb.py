@@ -49,19 +49,29 @@ commands = ['s', 'a', 'd', 'u', 'q']
 #Define the methods
 def show():
 
-    cr.execute('SELECT * FROM users WHERE id = "{id}"')
+    
+    cr.execute(f'SELECT * FROM users WHERE id = "{id}"')
 
     resule = cr.fetchall()
 
-    print(f'You have {len(resule)} skills')
+    # print(f'You have {len(resule)} skills')
 
-    print('Skills with progress: ')
+    print(resule)
+
+    if len(resule) > 0:
+
+        print(f'You have {len(resule)} skills')
+
+        print('Skills with progress: ')
+
+    else:
+        print('You have no skills, try to add some please.')    
 
     for sk in resule:
 
-        print(f'The skill is {sk[0]}')
+        print(f'The skill is {sk[1]}')
 
-        print(f'--The progress is {sk[1]}%')
+        print(f'--The progress is {sk[2]}%')
 
     saveAndClose()
 
