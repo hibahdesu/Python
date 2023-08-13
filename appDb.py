@@ -49,7 +49,6 @@ commands = ['s', 'a', 'd', 'u', 'q']
 #Define the methods
 def show():
 
-    
     cr.execute(f'SELECT * FROM users WHERE id = "{id}"')
 
     resule = cr.fetchall()
@@ -81,9 +80,28 @@ def add():
 
     skill = input('Write the skill: ').strip().capitalize()
 
-    level = input('Write the progress of your skill: ').strip()
+    cr.execute(f'SELECT skill FROM users WHERE skill = "{skill}" WHERE id = "{id}"')
 
-    cr.execute(f'INSERT INTO users(name, skill, progress, id) values("{user_name}", "{skill}", "{level}", "{id}")')
+    resule = cr.fetchone()
+
+    # print(resule)
+
+    if (resule == None):
+
+        print("The skill does not exist. You can add it.") 
+
+        level = input('Write the progress of your skill: ').strip()
+
+        cr.execute(f'INSERT INTO users(name, skill, progress, id) values("{user_name}", "{skill}", "{level}", "{id}")')
+        
+
+    else:
+
+        print("This skill already exists. You cannot add it again.")
+
+    # print(f'You have {len(resule)} skills')
+
+    
 
     saveAndClose()
 
@@ -100,15 +118,15 @@ def delete():
 
 def update():
 
+    skill = input('Write the skill: ').strip().capitalize()
+
+    level = input('Write the progress of your new skill: ').strip()
+
+    cr.execute(f'UPDATE users SET progress = "{level}" WHERE skill = "{skill}" AND id = "{id}"')
+
     saveAndClose()
 
-    pass
 
-def quit():
-
-    saveAndClose()
-
-    pass
 
 #Check the commands the user types
 if user_chooses in commands:
@@ -139,7 +157,6 @@ if user_chooses in commands:
     else: 
 
         #Quit Program
-        # quit()
         print('App Is Closed.')
 
         saveAndClose()
